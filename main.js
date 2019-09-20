@@ -9,4 +9,5 @@ function Start() {
 
   // Initialize Spaceship
   InitializeSpaceship();
+  InitializeSQUARE ();
 }

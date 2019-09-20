@@ -37,6 +37,26 @@ function handleShipAnimation() {
   }
 }
 
+function handleSQUARE() {
+
+    var radians = 0,
+        cos = Math.cos(radians),
+        sin = Math.sin(radians);
+    SQUARE.x += SQUARE.speed * sin;
+    SQUARE.y +=  SQUARE.speed * cos;
+
+  // Check if asteroid is leaving the boundary, if so, switch sides
+  if (SPACE_SHIP.x > GAME.canvas.width) {
+    SPACE_SHIP.x = 0;
+  } else if (SPACE_SHIP.x < 0) {
+    SPACE_SHIP.x = 600;
+  } else if (SPACE_SHIP.y > GAME.canvas.height) {
+    SPACE_SHIP.y = 0;
+  } else if (SPACE_SHIP.y < 0) {
+    SPACE_SHIP.y = 300;
+  }
+}
+
 function RenderNewObject(context) {
   // Draw a new item here using the canvas 'context' variable
 }
@@ -54,7 +74,8 @@ function runGame() {
     // 1 - Reposition the objects
     handleShipAnimation();
     HandleNewObjectMovement();
-
+    handleSQUARE ();
+    RenderSQUARE ();
     // 2 - Clear the CANVAS
     context.clearRect(0, 0, 600, 300);
 
@@ -68,5 +89,7 @@ function runGame() {
   }
   window.requestAnimationFrame(runGame);
 }
+
+
 
 window.requestAnimationFrame(runGame);
